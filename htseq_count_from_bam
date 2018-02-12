@@ -33,7 +33,7 @@ chmod +x filename
 for file in ./bam/*.sam
 	do 
 	echo $file
-	htseq-count $file ./Homo_sapiens.GRCh38.91.gtf > ${file/.bam/.txt}
+	htseq-count $file ./Homo_sapiens.GRCh38.91.gtf > ${file/.sam/.txt}
 	done
   
 
