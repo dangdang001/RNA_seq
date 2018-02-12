@@ -1,0 +1,40 @@
+Using htseq-count to output raw count matrix from aligned BAM file
+
+1. Convert multiple BAM files into SAM using shell script
+
+1.1 Create new shell script using nano
+
+nano filename 
+
+#!/bin/bash
+
+# convert all BAM to SAM in the current directory
+
+for file in ./*.bam
+	do 
+	echo $file 
+	samtools view -h $file > ${file/.bam/.sam}
+	done
+
+# save changes: ctrl+O exit: ctrl+x(+shift)
+
+1.2 Compile shell script to be able to execute
+chmod +x filename
+
+1.3 Run shell script
+./filename
+
+2. Use htseq-count to generate the count matrix for SAM files
+
+# first download the gtf(gff2)/gff3 file from Ensembl for the species
+
+#!/bin/bash
+
+for file in ./bam/*.sam
+	do 
+	echo $file
+	htseq-count $file ./Homo_sapiens.GRCh38.91.gtf 
+	done
+  
+
+
