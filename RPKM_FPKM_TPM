@@ -1,3 +1,26 @@
 A good refernce for undestanding the 3 normalization methods in processing RNA-seq count matrix: RPKM, FPKM and TPM
 
 http://www.rna-seqblog.com/rpkm-fpkm-and-tpm-clearly-explained/
+
+1. RPKM
+
+1) Count up the total reads in a sample and divide that number by 1,000,000 – this is our “per million” scaling factor.
+2) Divide the read counts by the “per million” scaling factor. This normalizes for sequencing depth, giving you reads per million (RPM)
+3) Divide the RPM values by the length of the gene, in kilobases. This gives you RPKM.
+
+2. FPKM 
+
+RPKM was made for single-end RNA-seq, FPKM was made for paired-end RNA-seq. With paired-end RNA-seq, two reads can correspond to a single
+fragment, or, if one read in the pair did not map, one read can correspond to a single fragment. The only difference between RPKM and FPKM
+is that FPKM takes into account that two reads can map to one fragment (and so it doesn’t count this fragment twice).
+
+3. TPM 
+
+1) Divide the read counts by the length of each gene in kilobases. This gives you reads per kilobase (RPK).
+2) Count up all the RPK values in a sample and divide this number by 1,000,000. This is your “per million” scaling factor.
+3) Divide the RPK values by the “per million” scaling factor. This gives you TPM.
+
+when calculating TPM, the only difference is that you normalize for gene length first, and then normalize for sequencing depth second.
+When you use TPM, the sum of all TPMs in each sample are the same. This makes it easier to compare the proportion of reads that mapped
+to a gene in each sample. In contrast, with RPKM and FPKM, the sum of the normalized reads in each sample may be different, and this 
+makes it harder to compare samples directly.
