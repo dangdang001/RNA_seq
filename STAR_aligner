@@ -1,11 +1,11 @@
 
-# download fasta
+# download fasta, put it into the created folder "genomeFastaFiles"
 sudo rsync -av rsync://ftp.ensembl.org/pub/release-91/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz ./
 
 # download gtf(gff)
 sudo rsync -av rsync://ftp.ensembl.org/pub/release-91/gtf/homo_sapiens/Homo_sapiens.GRCh38.91.gtf.gz ./
 
-# add write permission to the folder genomeDir
+# create directory "genomeDir", add write permission to the folder genomeDir
 sudo chown -R dyin1:dyin1 ./Wu_RNAseq_201802/genomeDir/
 
 # !bin/bash
