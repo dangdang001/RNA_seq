@@ -1,0 +1,31 @@
+
+# download fasta
+sudo rsync -av rsync://ftp.ensembl.org/pub/release-91/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz ./
+
+# download gtf(gff)
+sudo rsync -av rsync://ftp.ensembl.org/pub/release-91/gtf/homo_sapiens/Homo_sapiens.GRCh38.91.gtf.gz ./
+
+# add write permission to the folder genomeDir
+sudo chown -R dyin1:dyin1 ./Wu_RNAseq_201802/genomeDir/
+
+# !bin/bash
+./STAR-2.5.3a/source/STAR --runThreadN 32 --runMode genomeGenerate --genomeDir ./Wu_RNAseq_201802/genomeDir --genomeFastaFiles ./Wu_RNAseq_201802/Homo_sapiens.GRCh38.dna.primary_assembly.fa --sjdbGTFfile ./Wu_RNAseq_201802/Homo_sapiens.GRCh38.91.gtf 
+./STAR-2.5.3a/source/STAR --runThreadN 32 --genomeDir ./Wu_RNAseq_201802/genomeDir --readFilesIn ./Wu_RNAseq_201802/00_fastq/HMLE-4OHT-12h-1_R1_001.fastq ./Wu_RNAseq_201802/00_fastq/HMLE-4OHT-12h-1_R2_001.fastq --outFileNamePrefix ./4OHT_12h_1 --outSAMtype BAM Unsorted SortedByCoordinate --quantMode TranscriptomeSAM GeneCounts
+./STAR-2.5.3a/source/STAR --runThreadN 32 --genomeDir ./Wu_RNAseq_201802/genomeDir --readFilesIn ./Wu_RNAseq_201802/00_fastq/HMLE-4OHT-12h-2_R1_001.fastq ./Wu_RNAseq_201802/00_fastq/HMLE-4OHT-12h-2_R2_001.fastq --outFileNamePrefix ./4OHT_12h_2 --outSAMtype BAM Unsorted SortedByCoordinate --quantMode TranscriptomeSAM GeneCounts
+./STAR-2.5.3a/source/STAR --runThreadN 32 --genomeDir ./Wu_RNAseq_201802/genomeDir --readFilesIn ./Wu_RNAseq_201802/00_fastq/HMLE-4OHT-24h-1_R1_001.fastq ./Wu_RNAseq_201802/00_fastq/HMLE-4OHT-24h-1_R2_001.fastq --outFileNamePrefix ./4OHT_24h_1 --outSAMtype BAM Unsorted SortedByCoordinate --quantMode TranscriptomeSAM GeneCounts
+./STAR-2.5.3a/source/STAR --runThreadN 32 --genomeDir ./Wu_RNAseq_201802/genomeDir --readFilesIn ./Wu_RNAseq_201802/00_fastq/HMLE-4OHT-24h-2_R1_001.fastq ./Wu_RNAseq_201802/00_fastq/HMLE-4OHT-24h-2_R2_001.fastq --outFileNamePrefix ./4OHT_24h_2 --outSAMtype BAM Unsorted SortedByCoordinate --quantMode TranscriptomeSAM GeneCounts
+./STAR-2.5.3a/source/STAR --runThreadN 32 --genomeDir ./Wu_RNAseq_201802/genomeDir --readFilesIn ./Wu_RNAseq_201802/00_fastq/HMLE-4OHT-48h-1_R1_001.fastq ./Wu_RNAseq_201802/00_fastq/HMLE-4OHT-48h-1_R2_001.fastq --outFileNamePrefix ./4OHT_48h_1 --outSAMtype BAM Unsorted SortedByCoordinate --quantMode TranscriptomeSAM GeneCounts
+./STAR-2.5.3a/source/STAR --runThreadN 32 --genomeDir ./Wu_RNAseq_201802/genomeDir --readFilesIn ./Wu_RNAseq_201802/00_fastq/HMLE-4OHT-48h-2_R1_001.fastq ./Wu_RNAseq_201802/00_fastq/HMLE-4OHT-48h-2_R2_001.fastq --outFileNamePrefix ./4OHT_48h_2 --outSAMtype BAM Unsorted SortedByCoordinate --quantMode TranscriptomeSAM GeneCounts
+./STAR-2.5.3a/source/STAR --runThreadN 32 --genomeDir ./Wu_RNAseq_201802/genomeDir --readFilesIn ./Wu_RNAseq_201802/00_fastq/HMLE-EtOH-12h-1_R1_001.fastq ./Wu_RNAseq_201802/00_fastq/HMLE-EtOH-12h-1_R2_001.fastq --outFileNamePrefix ./EtOH_12h_1 --outSAMtype BAM Unsorted SortedByCoordinate --quantMode TranscriptomeSAM GeneCounts
+./STAR-2.5.3a/source/STAR --runThreadN 32 --genomeDir ./Wu_RNAseq_201802/genomeDir --readFilesIn ./Wu_RNAseq_201802/00_fastq/HMLE-EtOH-12h-2_R1_001.fastq ./Wu_RNAseq_201802/00_fastq/HMLE-EtOH-12h-2_R2_001.fastq --outFileNamePrefix ./EtOH_12h_2 --outSAMtype BAM Unsorted SortedByCoordinate --quantMode TranscriptomeSAM GeneCounts
+./STAR-2.5.3a/source/STAR --runThreadN 32 --genomeDir ./Wu_RNAseq_201802/genomeDir --readFilesIn ./Wu_RNAseq_201802/00_fastq/HMLE-EtOH-24h-1_R1_001.fastq ./Wu_RNAseq_201802/00_fastq/HMLE-EtOH-24h-1_R2_001.fastq --outFileNamePrefix ./EtOH_24h_1 --outSAMtype BAM Unsorted SortedByCoordinate --quantMode TranscriptomeSAM GeneCounts
+./STAR-2.5.3a/source/STAR --runThreadN 32 --genomeDir ./Wu_RNAseq_201802/genomeDir --readFilesIn ./Wu_RNAseq_201802/00_fastq/HMLE-EtOH-24h-2_R1_001.fastq ./Wu_RNAseq_201802/00_fastq/HMLE-EtOH-24h-2_R2_001.fastq --outFileNamePrefix ./EtOH_24h_2 --outSAMtype BAM Unsorted SortedByCoordinate --quantMode TranscriptomeSAM GeneCounts
+./STAR-2.5.3a/source/STAR --runThreadN 32 --genomeDir ./Wu_RNAseq_201802/genomeDir --readFilesIn ./Wu_RNAseq_201802/00_fastq/HMLE-EtOH-48h-1_R1_001.fastq ./Wu_RNAseq_201802/00_fastq/HMLE-EtOH-48h-1_R2_001.fastq --outFileNamePrefix ./EtOH_48h_1 --outSAMtype BAM Unsorted SortedByCoordinate --quantMode TranscriptomeSAM GeneCounts
+./STAR-2.5.3a/source/STAR --runThreadN 32 --genomeDir ./Wu_RNAseq_201802/genomeDir --readFilesIn ./Wu_RNAseq_201802/00_fastq/HMLE-EtOH-48h-2_R1_001.fastq ./Wu_RNAseq_201802/00_fastq/HMLE-EtOH-48h-2_R2_001.fastq --outFileNamePrefix ./EtOH_48h_2 --outSAMtype BAM Unsorted SortedByCoordinate --quantMode TranscriptomeSAM GeneCounts
+
+
+
+
+
+
+
